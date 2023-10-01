@@ -37,9 +37,9 @@ namespace CryptoNote
     const size_t CRYPTONOTE_BLOCK_GRANTED_FULL_REWARD_ZONE = 10000; // size of block (bytes) after which reward for block calculated using block size
     const size_t CRYPTONOTE_COINBASE_BLOB_RESERVED_SIZE = 600;
     // TODO Define number of digits
-    const size_t CRYPTONOTE_DISPLAY_DECIMAL_POINT = 12;
+    const size_t CRYPTONOTE_DISPLAY_DECIMAL_POINT = 10;
     // TODO Define minimum fee for transactions
-    const uint64_t MINIMUM_FEE = 50000;
+    const uint64_t MINIMUM_FEE = 100000;
     const uint64_t DEFAULT_DUST_THRESHOLD = MINIMUM_FEE;
 
     // TODO Define preferred block's target time
@@ -78,7 +78,7 @@ namespace CryptoNote
 
   // TODO Put here the name of your currency
   const char CRYPTONOTE_NAME[] = "bitbomb";
-  const char GENESIS_COINBASE_TX_HEX[] = "013c01ff0001ffffffffffff01029b2e4c0281c0b02e7c53291a94d1d0cbff8883f8024f5142ee494ffbbd08807121016caa094acc94a32a7c5b8ef512f75d73e20972a3bd165fa9f37de05428dd85b0";
+  const char GENESIS_COINBASE_TX_HEX[] = "013c01ff0001ffffffffffff01029b2e4c0281c0b02e7c53291a94d1d0cbff8883f8024f5142ee494ffbbd088071210173069b4ac911e00c47fa4fd63de54dac3a00d4618e50b3e635c2af78e6c82ba6";
 
   const uint8_t CURRENT_TRANSACTION_VERSION = 1;
   const uint8_t BLOCK_MAJOR_VERSION_1 = 1;
