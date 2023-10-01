@@ -106,7 +106,7 @@ endif()
 if (gtest_build_tests)
   # This must be set in the root directory for the tests to be run by
   # 'make test' or ctest.
-  enable_testing()
+  # enable_testing()
 
   ############################################################
   # C++ tests built with standard compiler flags.
