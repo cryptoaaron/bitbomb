@@ -8,12 +8,16 @@ services:
     command:
       - "bitbombd"
       - "--data-dir=/root/.bitbombd"
-      - "--log-level=4"
+      - "--log-level=2"
+      - "--start-mining="
+      - "--mining-threads=5"
+      - "--rpc-bind-ip=0.0.0.0"
     ports:
-      - "28823:23823"
+      - "23823:23823"
+      - "23723:23723"
     volumes:
       - "./datadir:/root/.bitbombd"
-    # restart: always
+    restart: always
 
   # wallet:
   #   tty: true

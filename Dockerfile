@@ -77,8 +77,16 @@ RUN groupadd --gid $USER_GID $USERNAME \
 
 RUN apt update && \
     apt install -y \
-    build-essential \
-    libboost-all-dev
+    gcc \
+    libboost-filesystem1.71.0 \
+    libboost-atomic1.71.0 \
+    libboost-container1.71.0 \
+    libboost-contract1.71.0 \
+    libboost-coroutine1.71.0 \
+    libboost-system1.71.0 \
+    libboost-thread1.71.0 \
+    libboost-iostreams1.71.0 \
+    libboost-program-options-dev
 
 
 # RUN useradd -ms /bin/bash bitbombuser
