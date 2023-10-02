@@ -1,0 +1,31 @@
+version: "3"
+services:
+  bitbomb:
+    tty: true
+    build: .
+    # image: "bombmoney/bitbombd:latest"
+    # user: "1001:1001"
+    command:
+      - "bitbombd"
+      - "--data-dir=/root/.bitbombd"
+      - "--log-level=4"
+    ports:
+      - "28823:23823"
+    volumes:
+      - "./datadir:/root/.bitbombd"
+    # restart: always
+
+  # wallet:
+  #   tty: true
+  #   build: .
+  #   # image: "bombmoney/bitbombd:latest"
+  #   # user: "1001:1001"
+  #   command:
+  #     - "simplewallet"
+  #     # - "--wallet-file-dir=/root/.bitbombd"
+  #     # - "--log-level=4"
+  #   ports:
+  #     - "28823:23823"
+  #   volumes:
+  #     - "./datadir:/root/.bitbombd"
+  #   # restart: always
