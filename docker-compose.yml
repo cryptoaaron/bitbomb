@@ -2,14 +2,15 @@ version: "3"
 services:
   bitbomb:
     tty: true
-    build: .
-    # image: "bombmoney/bitbombd:latest"
+    stdin_open: true # Keep STDIN open, even if not attached, allowing interactivity
+    # build: .
+    image: "bombmoney/bitbombd:latest"
     # user: "1001:1001"
     command:
       - "bitbombd"
       - "--data-dir=/root/.bitbombd"
       - "--log-level=2"
-      - "--start-mining="
+      - "--start-mining=bbz7p7yP62yhuBnG4ujQXcEurg678UexSUmvQxifLfa7JYVephhvRTqCRtxA6ZMVdyFBCh57ojJJv3ErhWWdKxXt175wCtZpHJ"
       - "--mining-threads=5"
       - "--rpc-bind-ip=0.0.0.0"
     ports:
@@ -18,6 +19,38 @@ services:
     volumes:
       - "./datadir:/root/.bitbombd"
     restart: always
+
+  gen-wallet:
+    tty: true
+    stdin_open: true # Keep STDIN open, even if not attached, allowing interactivity
+    # build: .
+    image: "bombmoney/bitbombd:latest"
+    # user: "1001:1001"
+    command:
+      - "simplewallet"
+      - "--daemon-host=bitbomb"
+      #- "--wallet-file=/root/wallet1.bin"
+      - "--generate-new-wallet=/tmp/wallet2.bin"
+      - "--password=8p@ssw0Rd8" # set something secure here, "8p@ssw0Rd8" is default for everyone
+    volumes:
+      - "./wallet:/tmp"
+    restart: never
+
+  use-wallet:
+    tty: true
+    stdin_open: true # Keep STDIN open, even if not attached, allowing interactivity
+    # build: .
+    image: "bombmoney/bitbombd:latest"
+    # user: "1001:1001"
+    command:
+      - "simplewallet"
+      - "--daemon-host=bitbomb"
+      - "--wallet-file=/tmp/wallet2.bin"
+      # - "--generate-new-wallet=/tmp/wallet2.bin"
+      - "--password=8p@ssw0Rd8" # set something secure here, "8p@ssw0Rd8" is default for everyone
+    volumes:
+      - "./wallet:/tmp"
+    restart: never
 
   # wallet:
   #   tty: true

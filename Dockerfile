@@ -62,7 +62,7 @@ WORKDIR /bitbomb
 
 RUN  make -j8
 
-    # /usr/bin/cmake --build ./build/. --parallel 8
+# /usr/bin/cmake --build ./build/. --parallel 8
 #RUN make
 
 
@@ -86,7 +86,7 @@ RUN apt update && \
     libboost-system1.71.0 \
     libboost-thread1.71.0 \
     libboost-iostreams1.71.0 \
-    libboost-program-options-dev
+    libboost-program-options1.71.0
 
 
 # RUN useradd -ms /bin/bash bitbombuser
@@ -95,15 +95,15 @@ RUN apt update && \
 #     ./bitbomb/build/release/src/ \
 #     ./app
 COPY --from=build \
-     ./bitbomb/build/release/src/ \
-     ./app
+    ./bitbomb/build/release/src/ \
+    ./app
 
 # RUN chown -R $USERNAME:$USERNAME /app
 
 
 
 # USER $USERNAME
-WORKDIR ./app
+WORKDIR /app
 # RUN mkdir -p ~/bitbombd
 COPY --from=build ./bitbomb/build/release/src/bitbombd /usr/local/bin
 COPY --from=build ./bitbomb/build/release/src/simplewallet /usr/local/bin
@@ -111,9 +111,9 @@ COPY docker-entrypoint.sh ./docker-entrypoint.sh
 
 RUN chmod +x ./docker-entrypoint.sh
 
-# WORKDIR ./app
+# WORKDIR /app
 
-EXPOSE 23823 23823/udp
+# EXPOSE 23823 23823/udp 23723 23723/udp
 
 
 ENTRYPOINT ["./docker-entrypoint.sh"]
